@@ -177,21 +177,23 @@ Reify:& \cmd{(reify Slicey (slice [at] ...))}\\
 \begin{tabularx}{\hsize}{lX}
 Definition:& \cmd{(defrecord Pair [h t])} \\
 Access:& \cmd{(:h (Pair. 1 2)) ;=> 1} \\
-Constructing:& \cmd{Pair.  ->Pair  map->Pair} \\
+Constructing:& \cmd{Pair. | ->Pair | map->Pair} \\
 \end{tabularx}
 
 \subsection{Types}
 \begin{tabularx}{\hsize}{lX}
 Definition:& \cmd{(deftype Pair [h t])} \\
 Access:& \cmd{(.-h (Pair. 1 2)) ;=> 1} \\
-Constructing:& \cmd{Pair. ->Pair} \\
-With Method(s):& \cmd{(deftype Pair [h t] Object (toString [] ...))} \\
+Constructing:& \cmd{Pair. | ->Pair} \\
+With Method(s):& \cmd{(deftype Pair [h t]}\\ 
+               & \cmd{  Object (toString [] ...))} \\
 \end{tabularx}
 
 \subsection{Multimethods}
 \begin{tabularx}{\hsize}{lX}
 Definition:& \cmd{(defmulti my-mm dispatch-function)}\\
-Method Define:& \cmd{(defmethod my-mm :dispatch-value [args] ...)}\\
+Method:& \cmd{(defmethod my-mm :dispatch-value}\\ 
+       & \cmd{  [args] ...)}\\
 \end{tabularx}
 
 }
@@ -199,20 +201,21 @@ Method Define:& \cmd{(defmethod my-mm :dispatch-value [args] ...)}\\
 \colouredbox{green2}{
 \section{JS Interop (http://fogus.me/cljs-js)}
 \begin{tabularx}{\hsize}{lX}
-Method Call: & \cmd{(.meth obj args)} \\
-  & \cmd{(. obj (meth args))} \\
-Property Access:  & \cmd{(.-prop obj)} \\
-  & \cmd{(. obj -prop)} \\
+Method Call: & \cmd{(.method obj args) |} \\
+  & \cmd{(. obj (method args))} \\
+Property Access:  & \cmd{(.-prop obj) |} \\
+  & \cmd{(. obj -prop) |} \\
   & \cmd{(aget obj prop-str)} \\
-Set Property: & \cmd{(set! (.-prop obj) val)} \\
+Set Property: & \cmd{(set! (.-prop obj) val) |} \\
  & \cmd{(aset obj prop-str val)} \\
 Set Array element: & \cmd{(aset arr idx val)} \\
 JS Global Access: & \cmd{js/window} \\
 JS \cmd{this}: & \cmd{(this-as me (.method me))} \\
 Create JS Object: & \cmd{(js-obj)} \\
-Create JS Array: & \cmd{(array var-args)  (make-array size)} \\
-Transf. JS value: & \cmd{(js->clj js-val)} \\
-Transf. CLJ value: & \cmd{(clj->js clj-val)} \\
+Create JS Array: & \cmd{(array items) | }\\
+                 & \cmd{(make-array size)} \\
+Transform JS: & \cmd{(js->clj js-val)} \\
+Transform CLJ: & \cmd{(clj->js clj-val)} \\
 \end{tabularx}
 
 }
